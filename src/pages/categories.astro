@@ -2,11 +2,234 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 <BaseLayout>
-  <h1>Categories</h1>
-  <ul>
-    <li><a href="/categories/technology">Technology</a></li>
-    <li><a href="/categories/science">Science</a></li>
-    <li><a href="/categories/finance">Finance</a></li>
-    <li><a href="/categories/health">Health</a></li>
-  </ul>
+  <header class="header">
+    <h1>书籍导航</h1>
+    <nav class="navbar">
+      <div class="search-bar">
+        <input type="text" id="search" placeholder="搜索书籍...">
+        <button id="search-button">搜索</button>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn">分类</button>
+        <div class="dropdown-content">
+          <a href="#" data-category="technology">技术</a>
+          <a href="#" data-category="science">科学</a>
+          <a href="#" data-category="finance">金融</a>
+          <a href="#" data-category="health">健康</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn">年份</button>
+        <div class="dropdown-content">
+          <a href="#" data-year="2023">2023</a>
+          <a href="#" data-year="2022">2022</a>
+          <a href="#" data-year="2021">2021</a>
+          <a href="#" data-year="2020">2020</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn">地区</button>
+        <div class="dropdown-content">
+          <a href="#" data-region="global">全球</a>
+          <a href="#" data-region="asia">亚洲</a>
+          <a href="#" data-region="europe">欧洲</a>
+          <a href="#" data-region="america">美洲</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <section class="recommended">
+    <h2>推荐书籍</h2>
+    <div class="book-item" data-category="technology" data-year="2023" data-region="global">
+      <img src="1.jpg" alt="Book 1">
+      <div class="book-content">
+        <h2>什么是AI？</h2>
+        <p>人工智能（Artificial Intelligence），英文缩写为AI</p>
+        <button class="read-button" data-file-path="/content/technology/what-is-ai.md">阅读</button>
+      </div>
+    </div>
+    <!-- 更多推荐书籍项 -->
+  </section>
+
+  <section class="popular-tags">
+    <h2>热门标签</h2>
+    <div class="tags">
+      <a href="#" class="tag">AI</a>
+      <a href="#" class="tag">数据科学</a>
+      <a href="#" class="tag">机器学习</a>
+      <a href="#" class="tag">区块链</a>
+      <a href="#" class="tag">金融科技</a>
+      <!-- 更多标签 -->
+    </div>
+  </section>
+
+  <section class="book-list">
+    <h2>书籍列表</h2>
+    <div class="book-item" data-category="technology" data-year="2023" data-region="global">
+      <img src="1.jpg" alt="Book 1">
+      <div class="book-content">
+        <h2>什么是AI？</h2>
+        <p>人工智能（Artificial Intelligence），英文缩写为AI</p>
+        <button class="read-button" data-file-path="/content/technology/what-is-ai.md">阅读</button>
+      </div>
+    </div>
+    <!-- 更多书籍项 -->
+  </section>
 </BaseLayout>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+  }
+
+  .header {
+    background-color: #69e709;
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .navbar {
+    display: flex;
+    gap: 20px;
+  }
+
+  .search-bar {
+    display: flex;
+    gap: 10px;
+  }
+
+  .search-bar input {
+    padding: 5px;
+    border: none;
+    border-radius: 4px;
+  }
+
+  .search-bar button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+  }
+
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .dropbtn {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 4px;
+  }
+
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+
+  .dropdown-content a:hover {
+    background-color: #f1f1f1;
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+  .recommended, .popular-tags, .book-list {
+    padding: 20px;
+    margin-top: 20px;
+  }
+
+  .book-item {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+  }
+
+  .book-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  }
+
+  .book-item img {
+    width: 100px;
+    height: auto;
+    margin-right: 20px;
+  }
+
+  .book-content {
+    flex: 1;
+  }
+
+  .book-item h2 {
+    margin: 0 0 10px;
+    font-size: 18px;
+  }
+
+  .book-item p {
+    margin: 0;
+    font-size: 14px;
+  }
+
+  .book-item button {
+    margin-top: 10px;
+    padding: 5px 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .book-item button:hover {
+    background-color: #0056b3;
+  }
+
+  .popular-tags .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .tag {
+    background-color: #f1f1f1;
+    border-radius: 4px;
+    padding: 5px 10px;
+    text-decoration: none;
+    color: #333;
+    transition: background-color 0.3s;
+  }
+
+  .tag:hover {
+    background-color: #ddd;
+  }
+</style>
+

@@ -1,7 +1,80 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Carousel from '../components/Carousel.astro';
 ---
 <BaseLayout>
-  <h1>Welcome to the Professional Knowledge Sharing Platform</h1>
-  <p>Your go-to resource for expert knowledge across various fields.</p>
+  <div class="welcome-section">
+    <h1>欢迎来到专业知识共享平台</h1>
+    <p>这是您的专业知识资源中心，涵盖各个领域的专家知识。</p>
+  </div>
+
+  <Carousel />
+
+  <section class="recommended-articles">
+    <h2>推荐文章</h2>
+    <article>
+      <h3><a href="/articles/ai">人工智能：未来的驱动力</a></h3>
+      <p>了解人工智能如何改变我们的生活和工作方式。</p>
+    </article>
+    <article>
+      <h3><a href="/articles/climate-change">气候变化：我们能做些什么</a></h3>
+      <p>探索应对气候变化的有效策略和个人行动。</p>
+    </article>
+    <article>
+      <h3><a href="/articles/investment-strategies">投资策略：如何实现财务自由</a></h3>
+      <p>学习不同的投资策略，帮助您实现财务自由。</p>
+    </article>
+  </section>
+
+  <style>
+    .welcome-section {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .welcome-section h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: #333;
+    }
+
+    .welcome-section p {
+      font-size: 1.5rem;
+      color: #666;
+      margin-bottom: 2rem;
+    }
+
+    .recommended-articles {
+      margin-top: 3rem;
+      padding: 2rem;
+      background-color: #f9f9f9;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .recommended-articles h2 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      color: #333;
+    }
+
+    .recommended-articles article {
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .recommended-articles article h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: #333;
+    }
+
+    .recommended-articles article p {
+      font-size: 1.2rem;
+      color: #666;
+    }
+  </style>
 </BaseLayout>

@@ -1,7 +1,48 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
+
 <BaseLayout>
-  <h1>About Us</h1>
-  <p>We are a platform dedicated to sharing professional knowledge and expertise.</p>
+  <style>
+    .about-container {
+      max-width: 800px;
+      margin: 20px auto;
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .about-title {
+      font-size: 2.5rem;
+      color: #333333;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .about-content {
+      font-size: 1.1rem;
+      color: #555555;
+      line-height: 1.8;
+    }
+  </style>
+
+  <div class="about-container">
+    <h1 class="about-title">关于我们</h1>
+    <p class="about-content">我们是一个致力于分享专业知识和经验的平台，旨在帮助每个人获得最新的专业信息，提升个人能力和竞争力。</p>
+
+    <h2 class="about-subtitle">我们的使命</h2>
+    <p class="about-content">我们的使命是为全球用户提供高质量的专业知识内容，涵盖技术、科学、金融、健康等多个领域，帮助他们在工作和学习中获得成功。</p>
+
+    <h2 class="about-subtitle">我们的愿景</h2>
+    <p class="about-content">我们的愿景是成为全球领先的专业知识共享平台，通过创新和卓越的内容，影响和推动社会进步和个人成长。</p>
+
+    <h2 class="about-subtitle">我们的价值观</h2>
+    <ul class="about-values">
+      <li>专业性：致力于提供精准、权威的专业知识。</li>
+      <li>创新性：不断探索新的知识领域和创新方法。</li>
+      <li>协作性：与全球专家和用户共同合作，共享经验和见解。</li>
+      <li>责任感：对用户和社会负责，确保信息的准确性和实用性。</li>
+    </ul>
+  </div>
 </BaseLayout>
