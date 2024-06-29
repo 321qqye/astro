@@ -1,0 +1,191 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const books = [
+  {
+    title: "人工智能：一种现代的方法",
+    author: "Stuart Russell 和 Peter Norvig",
+    year: 2021,
+    pages: 1152,
+    audience: "学生、研究人员和AI从业者",
+    description: "这本书被广泛认为是人工智能领域的经典教材，涵盖了从基础概念到高级应用的各个方面。书中详细介绍了智能代理、搜索算法、逻辑推理、机器学习、神经网络、自然语言处理等内容。",
+    price: "¥299",
+    rating: "★★★★★",
+    reviews: [
+      "这本书内容详实，是学习AI不可或缺的资源。",
+      "作者对复杂概念的解释非常清晰易懂，强烈推荐。"
+    ],
+    link: "https://example.com/ai-modern-approach",
+    purchaseLink: "https://example.com/buy-ai-modern-approach",
+    firstParagraph: "人工智能（AI）是计算机科学的一个分支，旨在创建能够执行通常需要人类智能的任务的系统。AI 包括机器学习、深度学习、自然语言处理等领域。"
+  },
+  {
+    title: "深度学习",
+    author: "Ian Goodfellow, Yoshua Bengio, 和 Aaron Courville",
+    year: 2016,
+    pages: 800,
+    audience: "机器学习研究人员和高级从业者",
+    description: "这是一本全面介绍深度学习的书籍，从基础理论到实践应用，适合对深度学习感兴趣的读者。书中涵盖了深度学习的数学基础、神经网络的基本结构和训练方法、卷积神经网络、递归神经网络等内容。",
+    price: "¥399",
+    rating: "★★★★☆",
+    reviews: [
+      "深度学习领域的权威书籍，内容非常全面。",
+      "适合有一定基础的读者，部分章节比较难懂。"
+    ],
+    link: "https://example.com/deep-learning",
+    purchaseLink: "https://example.com/buy-deep-learning",
+    firstParagraph: "深度学习是机器学习的一个子领域，主要关注神经网络及其在大数据和复杂模式识别中的应用。近年来，深度学习在图像识别、语音识别和自然语言处理等领域取得了显著的进展。"
+  },
+  {
+    title: "机器学习实战",
+    author: "Peter Harrington",
+    year: 2012,
+    pages: 384,
+    audience: "机器学习初学者和实践者",
+    description: "这本书专注于机器学习的实际应用，提供了许多实践项目和示例代码，适合初学者和实践者。书中详细介绍了数据预处理、监督学习、无监督学习、支持向量机、决策树等技术，并结合Python代码进行演示。",
+    price: "¥199",
+    rating: "★★★★☆",
+    reviews: [
+      "非常实用的书，例子丰富，适合初学者。",
+      "代码示例帮助很大，但有些内容过于基础。"
+    ],
+    link: "https://example.com/machine-learning-practice",
+    purchaseLink: "https://example.com/buy-machine-learning-practice",
+    firstParagraph: "机器学习是一种数据分析方法，通过建立模型从数据中自动学习和预测。这本书提供了各种机器学习算法的详细介绍，并通过Python代码演示了如何在实际项目中应用这些算法。"
+  }
+];
+---
+
+<BaseLayout>
+  <h1>关于人工智能的书籍介绍</h1>
+  <ul class="book-list">
+    {books.map(book => (
+      <li class="book-item">
+        <h2>{book.title}</h2>
+        <p><strong>作者：</strong>{book.author}</p>
+        <p><strong>出版年份：</strong>{book.year}</p>
+        <p><strong>页数：</strong>{book.pages}</p>
+        <p><strong>适用人群：</strong>{book.audience}</p>
+        <p>{book.description}</p>
+        <p><strong>价格：</strong>{book.price}</p>
+        <p><strong>评价：</strong>{book.rating}</p>
+        <p><strong>用户评价：</strong></p>
+        <ul class="reviews">
+          {book.reviews.map(review => (
+            <li>{review}</li>
+          ))}
+        </ul>
+        <p><strong>书籍第一段：</strong></p>
+        <p>{book.firstParagraph}</p>
+        <a href={book.link} target="_blank" rel="noopener noreferrer" class="more-info">了解更多</a>
+        <br />
+        <a href={book.purchaseLink} target="_blank" rel="noopener noreferrer" class="purchase-link">购买链接</a>
+      </li>
+    ))}
+  </ul>
+
+  <h2>留言板</h2>
+  <form action="/submit-comment" method="post" class="comment-form">
+    <label for="name">姓名：</label>
+    <input type="text" id="name" name="name" required />
+    <br />
+    <label for="comment">评论：</label>
+    <textarea id="comment" name="comment" required></textarea>
+    <br />
+    <button type="submit" class="submit-button">提交</button>
+  </form>
+</BaseLayout>
+
+<style>
+  body {
+    background: #f5f5f5;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  h1 {
+    text-align: center;
+    margin: 20px 0;
+    color: #333;
+  }
+
+  .book-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .book-item {
+    background: #fff;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .book-item h2 {
+    margin-top: 0;
+    color: #007acc;
+  }
+
+  .book-item p {
+    margin: 10px 0;
+    line-height: 1.6;
+  }
+
+  .reviews {
+    list-style: disc inside;
+    margin: 10px 0 20px;
+    padding: 0;
+  }
+
+  .more-info, .purchase-link {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 15px;
+    border-radius: 4px;
+    text-decoration: none;
+    background: #007acc;
+    color: #fff;
+  }
+
+  .more-info:hover, .purchase-link:hover {
+    background: #005ea6;
+  }
+
+  .comment-form {
+    background: #fff;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .comment-form label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+  }
+
+  .comment-form input, .comment-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  .submit-button {
+    display: inline-block;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background: #007acc;
+    color: #fff;
+    cursor: pointer;
+  }
+
+  .submit-button:hover {
+    background: #005ea6;
+  }
+</style>
